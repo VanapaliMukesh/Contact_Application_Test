@@ -1,65 +1,61 @@
-# Contact Application Backend
+Contacts Management API (Backend)
+Description
+This project is the backend implementation for the Contacts Management Application. It provides a robust RESTful API to manage contacts, handle CRUD operations, merge duplicate contacts, validate fields, and secure endpoints through authentication.
 
-This is the **backend** of the **Contact Application**, which is built using **Node.js** and **Express**. The backend handles all the server-side logic, including managing contacts, handling requests, and connecting to the database.
+Key Features
+CRUD Operations:
+Endpoints for creating, reading, updating, and deleting contact information.
+Supports First Name, Last Name, Email Address, Phone Number, and Address fields.
+Contact Merging:
+Logic to merge duplicate contacts based on email address or phone number.
+Provides an endpoint to trigger merging and resolve duplicates.
+Field Validations:
+First Name, Last Name (required, alphabetic characters only).
+Email (must be unique and in a valid format).
+Phone Number (must be unique and in a valid format).
+Address (optional, validated if provided).
+Authentication:
+Secured using JWT (JSON Web Token).
+Role-based access control: Admin and Regular User.
+Technologies Used
+Framework: Express.js (Node.js)
+Database: MongoDB (NoSQL)
+Authentication: JWT (JSON Web Token)
+ORM/ODM: Mongoose for MongoDB schema and validation
+Setup Instructions
+Prerequisites
+.Node.js (>= 14.x)
+.MongoDB (local or cloud instance, e.g., MongoDB Atlas)
 
-## Features
-
-- **API Endpoints**: Provides various API routes to handle CRUD operations for contacts (Create, Read, Update, Delete).
-- **Database Integration**: Connects to a database (e.g., MongoDB) to store and retrieve contact information.
-- **Authentication (Optional)**: Secures endpoints with authentication mechanisms such as JWT (if implemented).
-  
-## Tech Stack
-
-- **Node.js**: Server-side JavaScript runtime.
-- **Express**: Web framework for building RESTful APIs.
-- **MongoDB** (or any database of choice): NoSQL database for storing contact information.
-- **Mongoose** (if using MongoDB): ODM (Object Data Modeling) for MongoDB.
-- **Cors**: Middleware to enable cross-origin requests from the frontend.
-- **dotenv**: Loads environment variables for configuration.
-
-## Installation
-
-### Clone the Repository
-
-Clone the repository to your local machine:
-
-```bash
-git clone https://github.com/VanapaliMukesh/Contact_Application_Test.git
-cd Contact_Application_Test
-
-Navigate to the backend directory:
+nstallation Steps
+Clone the repository:
 
 bash
 Copy code
-cd server
-Install the required dependencies:
+git clone https://github.com/VanapaliMukesh/Contact_Application_backend.git
+cd Contact_Application_backend
+Install dependencies:
 
 bash
 Copy code
 npm install
-Configuration
-Create a .env file in the root of the backend directory.
+Create a .env file in the root of the project and add the following environment variables:
 
-Add the following environment variables to the .env file:
-
-plaintext
+bash
 Copy code
-PORT=5000
-MONGO_URI=<your-mongo-db-uri>
-JWT_SECRET=<your-jwt-secret>
-Replace <your-mongo-db-uri> with your MongoDB connection string (or any database URI you're using) and <your-jwt-secret> with a secret key if using authentication.
-
-Running the Server
-To start the backend server:
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+Start the application:
 
 bash
 Copy code
 npm start
-The server will be running on http://localhost:5000.
+The backend API will be running on http://localhost:5000.
 
-API Endpoints
-GET /api/contacts: Retrieve all contacts.
-POST /api/contacts: Add a new contact.
-PUT /api/contacts/:id: Update an existing contact.
-DELETE /api/contacts/:id: Delete a contact.
-You can test the API endpoints using Postman or any other API testing tool.
+API Documentation
+GET /contacts: Get a list of all contacts.
+POST /contacts: Create a new contact.
+PUT /contacts/:id: Update an existing contact.
+DELETE /contacts/:id: Delete a contact.
+POST /merge: Merge duplicate contacts based on email or phone number.
+For detailed API documentation and testing, use Postman or Swagger (if integrated)
